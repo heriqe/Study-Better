@@ -1,6 +1,7 @@
 {
   "name": "study-better",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -8,17 +9,21 @@
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
-    "react": "^18.x",
-    "react-dom": "^18.x"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.x",
-    "eslint": "^8.x",
-    "eslint-plugin-react-hooks": "^4.x",
-    "eslint-plugin-react-refresh": "^0.x",
-    "postcss": "^8.x",
-    "tailwindcss": "^3.x",
-    "vite": "^4.x",
-    "@vitejs/plugin-react": "^3.x"
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.0.0"
   }
 }
