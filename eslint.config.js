@@ -30,17 +30,4 @@ export default [
       ],
     },
   },
-
 ]
-
-document.addEventListener('DOMContentLoaded', function() {
-  const progressBars = document.querySelectorAll('[style*="width:"]');
-  progressBars.forEach(bar => {
-      const currentWidth = bar.style.width;
-      bar.style.width = '0%';
-      setTimeout(() => {
-          bar.style.width = currentWidth;
-      }, 300);
-  });
-  
-});

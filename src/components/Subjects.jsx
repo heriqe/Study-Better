@@ -9,15 +9,15 @@ export default function Subjects() {
   ]
 
   useEffect(() => {
-    const progressBars = document.querySelectorAll('[data-progress]');
+    const progressBars = document.querySelectorAll('[data-progress]')
     progressBars.forEach(bar => {
-      const currentWidth = bar.dataset.progress;
-      bar.style.width = '0%';
+      const currentWidth = bar.dataset.progress
+      bar.style.width = '0%'
       setTimeout(() => {
-        bar.style.width = `${currentWidth}%`;
-      }, 300);
-    });
-  }, []);
+        bar.style.width = `${currentWidth}%`
+      }, 300)
+    })
+  }, [])
 
   return (
     <div className="bg-gray-50 py-16">
