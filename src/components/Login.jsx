@@ -1,48 +1,22 @@
 import { useState } from 'react'
 
 export default function Login({ onClose, onLoginSuccess }) {
-  const [mode, setMode] = useState('login') // 'login' ou 'register'
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [mode, setMode] = useState('login')
+  const [form, setForm] = useState({ username: '', email: '', password: '', confirmPassword: '' })
   const [error, setError] = useState('')
 
-  function handleLoginSubmit(e) {
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setError('')
-
-    const usersJSON = localStorage.getItem('users')
-    const users = usersJSON ? JSON.parse(usersJSON) : []
-
-    const user = users.find(u => u.email === email && u.password === password)
-    if (user) {
-      onLoginSuccess(user)
-    } else {
-      setError('Email ou senha inválidos.')
+    const users = JSON.parse(localStorage.getItem('users') || '[]')
+    if (mode === 'login') {
+      const user = users.find(u => u.email === form.email && u.password === form.password)
+      return user ? onLoginSuccess(user) : setError('Email ou senha inválidos.')
     }
-  }
-
-  function handleRegisterSubmit(e) {
-    e.preventDefault()
-    setError('')
-
-    if (password !== confirmPassword) {
-      setError('As senhas não coincidem.')
-      return
-    }
-
-    let users = []
-    const usersJSON = localStorage.getItem('users')
-    if (usersJSON) users = JSON.parse(usersJSON)
-
-    const userExists = users.some(u => u.email === email)
-    if (userExists) {
-      setError('Já existe uma conta com esse email.')
-      return
-    }
-
-    const newUser = { username, email, password }
+    if (form.password !== form.confirmPassword) return setError('Senhas não coincidem.')
+    if (users.some(u => u.email === form.email)) return setError('Email já cadastrado.')
+    const newUser = { username: form.username, email: form.email, password: form.password }
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))
     onLoginSuccess(newUser)
@@ -50,114 +24,36 @@ export default function Login({ onClose, onLoginSuccess }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full relative">
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-          aria-label="Fechar"
-        >
-          <i className="fas fa-times text-xl"></i>
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md relative">
+        <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+          <i className="fas fa-times"></i>
         </button>
-
-        {mode === 'login' ? (
-          <>
-            <h2 className="text-2xl font-bold mb-6">Entrar</h2>
-            <form onSubmit={handleLoginSubmit} className="space-y-4">
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              <input
-                type="password"
-                placeholder="Senha"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
-              >
-                Entrar
-              </button>
-            </form>
-            <p className="mt-4 text-center text-gray-600">
-              Não tem uma conta?{' '}
-              <button
-                onClick={() => {
-                  setMode('register')
-                  setError('')
-                }}
-                className="text-indigo-600 hover:underline"
-              >
-                Criar conta
-              </button>
-            </p>
-          </>
-        ) : (
-          <>
-            <h2 className="text-2xl font-bold mb-6">Criar Conta</h2>
-            <form onSubmit={handleRegisterSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Nome de usuário"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              <input
-                type="password"
-                placeholder="Senha"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              <input
-                type="password"
-                placeholder="Confirmar senha"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                required
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-              />
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
-              >
-                Criar conta
-              </button>
-            </form>
-            <p className="mt-4 text-center text-gray-600">
-              Já tem uma conta?{' '}
-              <button
-                onClick={() => {
-                  setMode('login')
-                  setError('')
-                }}
-                className="text-indigo-600 hover:underline"
-              >
-                Entrar
-              </button>
-            </p>
-          </>
-        )}
+        <h2 className="text-xl font-bold mb-4">{mode === 'login' ? 'Entrar' : 'Criar Conta'}</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {mode === 'register' && (
+            <input name="username" placeholder="Nome de usuário" required onChange={handleChange}
+              className="w-full p-2 border rounded" />
+          )}
+          <input name="email" type="email" placeholder="Email" required onChange={handleChange}
+            className="w-full p-2 border rounded" />
+          <input name="password" type="password" placeholder="Senha" required onChange={handleChange}
+            className="w-full p-2 border rounded" />
+          {mode === 'register' && (
+            <input name="confirmPassword" type="password" placeholder="Confirmar senha" required onChange={handleChange}
+              className="w-full p-2 border rounded" />
+          )}
+          {error && <p className="text-red-500">{error}</p>}
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
+            {mode === 'login' ? 'Entrar' : 'Criar conta'}
+          </button>
+        </form>
+        <p className="mt-3 text-center text-sm">
+          {mode === 'login' ? 'Não tem conta?' : 'Já tem conta?'}{' '}
+          <button onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError('') }}
+            className="text-indigo-600 hover:underline">
+            {mode === 'login' ? 'Criar conta' : 'Entrar'}
+          </button>
+        </p>
       </div>
     </div>
   )
