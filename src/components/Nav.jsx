@@ -1,59 +1,45 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import Login from './Login.jsx'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Nav() {
   const [user, setUser] = useState(null)
-  const [showLogin, setShowLogin] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const stored = localStorage.getItem('currentUser')
-    if (stored) setUser(JSON.parse(stored))
+    const storedUser = localStorage.getItem('user')
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
   }, [])
 
-  const handleLoginSuccess = (u) => {
-    setUser(u)
-    localStorage.setItem('currentUser', JSON.stringify(u))
-    setShowLogin(false)
-  }
-
   const handleLogout = () => {
+    localStorage.removeItem('user')
     setUser(null)
-    localStorage.removeItem('currentUser')
+    navigate('/')
   }
 
   return (
-    <>
-      <nav className="bg-white shadow sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between h-16 items-center">
-          <div className="flex items-center space-x-6">
-            <Link to="/" className="flex items-center">
-              <i className="fas fa-brain text-indigo-600 text-2xl mr-2"></i>
-              <span className="text-xl font-bold text-indigo-600">Study Better</span>
-            </Link>
-            <div className="hidden sm:flex sm:space-x-4">
-              <Link to="/" className="text-gray-700 hover:text-indigo-600">Início</Link>
-              <Link to="/materias" className="text-gray-700 hover:text-indigo-600">Matérias</Link>
-              <Link to="/simulados" className="text-gray-700 hover:text-indigo-600">Simulados</Link>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            {user ? (
-              <>
-                <span className="text-indigo-600 font-medium">{user.username}</span>
-                <button onClick={handleLogout} className="bg-red-500 px-3 py-1 rounded text-sm text-white">
-                  Sair
-                </button>
-              </>
-            ) : (
-              <button onClick={() => setShowLogin(true)} className="bg-indigo-600 px-4 py-2 rounded text-white hover:bg-indigo-700">
-                Entrar
-              </button>
-            )}
-          </div>
-        </div>
-      </nav>
-      {showLogin && <Login onClose={() => setShowLogin(false)} onLoginSuccess={handleLoginSuccess} />}
-    </>
+    <nav className="bg-white shadow-md p-4 flex justify-between items-center max-w-7xl mx-auto">
+      <Link to="/" className="text-2xl font-bold text-indigo-600">
+        Study Better
+      </Link>
+      <div>
+        <Link to="/materias" className="mr-6 text-gray-700 hover:text-indigo-600">Matérias</Link>
+        <Link to="/simulados" className="mr-6 text-gray-700 hover:text-indigo-600">Simulados</Link>
+        {!user ? (
+          <Link to="/login" className="text-indigo-600 font-semibold hover:underline">Entrar</Link>
+        ) : (
+          <>
+            <span className="mr-4 text-gray-700">Olá, {user.username}</span>
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Sair
+            </button>
+          </>
+        )}
+      </div>
+    </nav>
   )
 }

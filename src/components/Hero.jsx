@@ -10,7 +10,7 @@ export default function Hero() {
         Conteúdos exclusivos, simulados personalizados e plano inteligente para você.
       </p>
       <Link
-        to="/simulados"
+        to="/login"
         className="bg-white text-indigo-700 px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition"
       >
         Começar agora

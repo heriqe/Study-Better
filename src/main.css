@@ -1,41 +1,48 @@
+/* main.css */
+
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Diretivas do Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Seus estilos personalizados */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8fafc;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #0c64d6 100%);
+    background: linear-gradient(135deg, #4f46e5 0%, #0c64d6 100%);
 }
 
 .subject-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .test-card {
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .test-card:hover {
-  transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 .progress-ring__circle {
-  transition: stroke-dashoffset 0.5s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 .floating-btn {
-  animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }

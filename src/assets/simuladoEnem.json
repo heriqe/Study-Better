@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual é a fórmula da água?",
+    "alternativas": ["H₂O", "CO₂", "NaCl", "O₂"],
+    "correta": "H₂O"
+  },
+  {
+    "id": 2,
+    "pergunta": "Quem descobriu o Brasil?",
+    "alternativas": ["Pedro Álvares Cabral", "Dom Pedro I", "Tiradentes", "Vasco da Gama"],
+    "correta": "Pedro Álvares Cabral"
+  }
+]
