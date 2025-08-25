@@ -1,18 +1,45 @@
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Materias from './pages/Materias'
-import NotFound from './pages/NotFound'
-import Login from './components/Login'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Subjects from "./components/Subjects";
+import Simulados from "./components/Simulados";
+import Plans from "./components/Plans";
+import Testimonials from "./components/Testimonials";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
+import Modals from "./components/Modals";
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/materias" element={<Materias />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  )
-}
+    <div className="App font-sans">
+      {/* Navbar */}
+      <Navbar />
 
-export default App
+      {/* Hero */}
+      <Hero />
+
+      {/* Seção de Matérias */}
+      <Subjects />
+
+      {/* Seção de Simulados */}
+      <Simulados />
+
+      {/* Seção de Planos */}
+      <Plans />
+
+      {/* Depoimentos */}
+      <Testimonials />
+
+      {/* Call to Action */}
+      <CTA />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Modais de Login/Cadastro */}
+      <Modals />
+    </div>
+  );
+};
+
+export default App;

@@ -1,22 +1,27 @@
-import React from 'react'
-import Hero from '../components/Hero.jsx'
-import Stats from '../components/Stats.jsx'
-import Subjects from '../components/Subjects.jsx'
-import Tests from '../components/Tests.jsx'
-import StudyPlan from '../components/StudyPlan.jsx'
-import Testimonials from '../components/Testimonials.jsx'
-import CTA from '../components/CTA.jsx'
+// src/pages/Home.jsx
+import React from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Subjects from "../components/Subjects";
+import Simulados from "../components/Simulados";
+import Plans from "../components/Plans";
+import Testimonials from "../components/Testimonials";
+import Footer from "../components/Footer";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <Hero />
-      <Stats />
-      <Subjects />
-      <Tests />
-      <StudyPlan />
-      <Testimonials />
-      <CTA />
+      <Navbar />
+      <main>
+        <Hero />
+        <Subjects />
+        <Simulados />
+        <Plans />
+        <Testimonials />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
+
+export default Home;
