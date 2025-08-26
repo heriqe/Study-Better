@@ -1,9 +1,9 @@
 import React from "react";
 
 const testimonials = [
-  { name: "Ana Paula", feedback: "O StudyBetter transformou meus estudos! Agora me sinto mais confiante para o ENEM.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=1" },
-  { name: "Carlos Henrique", feedback: "Os simulados são incríveis, consegui treinar exatamente o que precisava.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=2" },
-  { name: "Fernanda Lima", feedback: "A plataforma é muito intuitiva e os conteúdos são claros e objetivos.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=3" }
+  { name: "Aluno 1", feedback: "O StudyBetter transformou meus estudos! Agora me sinto mais confiante para o ENEM.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=1" },
+  { name: "Aluno 2", feedback: "Os simulados são incríveis, consegui treinar exatamente o que precisava.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=2" },
+  { name: "Aluno 3", feedback: "A plataforma é muito intuitiva e os conteúdos são claros e objetivos.", role: "Estudante", avatar: "https://i.pravatar.cc/100?img=3" }
 ];
 
 const Testimonials = () => (

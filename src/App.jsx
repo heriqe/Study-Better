@@ -7,7 +7,7 @@ import Plans from "./components/Plans";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
-import Modals from "./components/Modals";
+import LoginModal from "./components/LoginModal"; // <-- substitui Modals pelo LoginModal
 
 const App = () => {
   return (
@@ -36,8 +36,8 @@ const App = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Modais de Login/Cadastro */}
-      <Modals />
+      {/* Modal de Login */}
+      <LoginModal />
     </div>
   );
 };
