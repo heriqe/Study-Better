@@ -9,28 +9,32 @@ const plans = [
   {
     id: "enem",
     title: "Plano ENEM (3 a 6 meses)",
-    description: "Estratégia completa para o ENEM, unindo teoria, questões e redação.",
+    description:
+      "Montado pela equipe Study Better para preparar você para todas as áreas do ENEM. Objetivo: dominar teoria, treinar com questões e garantir alto desempenho na redação.",
     icon: <FaGraduationCap className="text-white text-4xl" />,
     gradient: "from-blue-500 to-blue-700",
   },
   {
     id: "fuvest",
     title: "Plano Fuvest (6 meses)",
-    description: "Preparação focada no perfil da prova, com ênfase em exatas e redação.",
+    description:
+      "Desenvolvido pela equipe Study Better com foco nas exigências da Fuvest. Objetivo: aprofundar nas disciplinas-chave e praticar questões no formato da prova.",
     icon: <FaUniversity className="text-white text-4xl" />,
     gradient: "from-purple-500 to-purple-700",
   },
   {
     id: "unicamp",
     title: "Plano Unicamp (6 meses)",
-    description: "Estudo direcionado com foco em interpretação e questões discursivas.",
+    description:
+      "Criado pela equipe Study Better para treinar interpretação e questões discursivas, alinhado ao estilo e conteúdos cobrados pela Unicamp.",
     icon: <FaBook className="text-white text-4xl" />,
     gradient: "from-green-500 to-green-700",
   },
   {
     id: "tecnologia",
     title: "Plano Carreiras Tech",
-    description: "Base de matemática, lógica e raciocínio para carreiras de tecnologia.",
+    description:
+      "Planejamento da equipe Study Better para formar uma base sólida em programação, lógica e ferramentas, visando inserir você no mercado de tecnologia.",
     icon: <FaLaptopCode className="text-white text-4xl" />,
     gradient: "from-yellow-500 to-amber-500",
   },
