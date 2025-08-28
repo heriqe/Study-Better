@@ -8,9 +8,14 @@ const PlanoUnicamp = () => {
     <div className="App font-sans">
       <main className="pt-24 bg-gray-50 min-h-screen px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-10">
+          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-6">
             Plano de Estudos para a UNICAMP (3 a 6 meses)
           </h1>
+          <p className="text-gray-700 text-lg mb-10 text-center">
+            Elaborado pela equipe <strong>Study Better</strong>, este plano é voltado para quem vai prestar a UNICAMP. 
+            O foco é no desenvolvimento de interpretação, raciocínio e resolução de questões discursivas, 
+            seguindo o estilo característico da banca.
+          </p>
 
           {/* Organização Geral */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
@@ -20,8 +25,8 @@ const PlanoUnicamp = () => {
             </div>
             <ul className="list-disc ml-6 space-y-1">
               <li>Tempo diário: 4 a 6 horas</li>
-              <li>6 dias de estudo, 1 de descanso/revisão</li>
-              <li>Foco: interpretação, raciocínio e questões discursivas</li>
+              <li>6 dias de estudo + 1 de descanso/revisão</li>
+              <li>Foco: interpretação e discursivas</li>
             </ul>
           </div>
 
@@ -41,44 +46,42 @@ const PlanoUnicamp = () => {
             </ul>
           </div>
 
-          {/* Estrutura do Estudo */}
+          {/* Estrutura do Estudo Diário */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
             <div className="flex items-center gap-3 mb-4">
               <FaBook className="text-[#47a5df] text-2xl" />
               <h2 className="text-2xl font-semibold">📌 Estrutura do Estudo Diário</h2>
             </div>
             <ul className="list-disc ml-6 space-y-1">
-              <li>Aquecimento (10 min): revisar apontamentos do dia anterior</li>
-              <li>Bloco 1 (50 min): teoria</li>
-              <li>Bloco 2 (50 min): resolução de questões discursivas</li>
-              <li>Bloco 3 (50 min): segundo tema + exercícios</li>
-              <li>Redação: 1h, 2x semana</li>
-              <li>Revisão rápida: 20 min com flashcards/mapas mentais</li>
+              <li>Aquecimento (10 min) → revisar apontamentos do dia anterior</li>
+              <li>Bloco 1 (50 min) → Teoria</li>
+              <li>Bloco 2 (50 min) → Resolução de questões discursivas</li>
+              <li>Bloco 3 (50 min) → Segundo tema + exercícios</li>
+              <li>Redação (1h, 2x por semana)</li>
+              <li>Revisão rápida (20 min) → flashcards, mapas mentais</li>
             </ul>
           </div>
 
           {/* Conteúdos-Chave */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
             <h2 className="text-2xl font-semibold mb-4">📖 Conteúdos-Chave</h2>
-
             <p className="font-semibold">Matemática</p>
             <ul className="list-disc ml-6">
               <li>Funções, análise combinatória, probabilidade, trigonometria</li>
             </ul>
-
             <p className="font-semibold mt-4">Ciências da Natureza</p>
             <ul className="list-disc ml-6">
-              <li>Física, Química e Biologia — foco em questões interdisciplinares</li>
+              <li>Física: mecânica, termodinâmica, óptica, eletricidade</li>
+              <li>Química: geral, orgânica, físico-química</li>
+              <li>Biologia: genética, ecologia, fisiologia</li>
             </ul>
-
             <p className="font-semibold mt-4">Ciências Humanas</p>
             <ul className="list-disc ml-6">
               <li>História do Brasil e Mundial, Geografia física e humana</li>
             </ul>
-
             <p className="font-semibold mt-4">Português e Literatura</p>
             <ul className="list-disc ml-6">
-              <li>Interpretação de textos, gramática, movimentos literários</li>
+              <li>Interpretação, gramática, movimentos literários</li>
               <li>Obras exigidas pela UNICAMP</li>
             </ul>
           </div>
@@ -103,7 +106,7 @@ const PlanoUnicamp = () => {
               <h2 className="text-2xl font-semibold">🎯 Dicas Extras</h2>
             </div>
             <ul className="list-disc ml-6 space-y-1">
-              <li>Praticar questões discursivas anteriores da UNICAMP</li>
+              <li>Praticar questões discursivas anteriores</li>
               <li>Treinar escrita clara e objetiva</li>
               <li>Gerenciar tempo em simulados</li>
               <li>Manter equilíbrio entre teoria e prática</li>

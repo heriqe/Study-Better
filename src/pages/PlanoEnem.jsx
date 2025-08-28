@@ -1,4 +1,3 @@
-// src/pages/PlanoEnem.jsx
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,9 +8,15 @@ const PlanoEnem = () => {
     <div className="App font-sans">
       <main className="pt-24 bg-gray-50 min-h-screen px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-10">
+          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-6">
             Plano de Estudos para o ENEM (3 a 6 meses)
           </h1>
+          <p className="text-gray-700 text-lg mb-10 text-center">
+            Este plano foi cuidadosamente desenvolvido pela equipe <strong>Study Better</strong>
+            para estudantes que desejam se preparar de forma completa para o ENEM. Ele combina 
+            teoria, prática com questões e treino de redação, visando otimizar o tempo de estudo 
+            e alcançar alta performance na prova.
+          </p>
 
           {/* Organização Geral */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
@@ -53,7 +58,7 @@ const PlanoEnem = () => {
               <li>Bloco 1 (50 min) → Estudo teórico</li>
               <li>Bloco 2 (50 min) → Resolução de questões</li>
               <li>Bloco 3 (50 min) → Segundo tema do dia + exercícios</li>
-              <li>Redação (1h, 2x semana) → treino e leitura de temas</li>
+              <li>Redação (1h, 2x semana)</li>
               <li>Revisão rápida (20 min) → flashcards, mapas mentais ou resumo</li>
             </ul>
           </div>

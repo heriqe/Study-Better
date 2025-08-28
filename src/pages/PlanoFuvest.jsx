@@ -1,4 +1,3 @@
-// src/pages/PlanoFuvest.jsx
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,9 +8,14 @@ const PlanoFuvest = () => {
     <div className="App font-sans">
       <main className="pt-24 bg-gray-50 min-h-screen px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-10">
+          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-6">
             Plano de Estudos para a FUVEST (3 a 6 meses)
           </h1>
+          <p className="text-gray-700 text-lg mb-10 text-center">
+            Criado pela equipe <strong>Study Better</strong>, este plano é ideal para candidatos que buscam aprovação na FUVEST.
+            Estruturado para aprofundar conhecimentos nas disciplinas-chave e praticar com questões no formato da prova, 
+            aumentando as chances de sucesso.
+          </p>
 
           {/* Organização Geral */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
@@ -20,8 +24,8 @@ const PlanoFuvest = () => {
               <h2 className="text-2xl font-semibold">⏳ Organização Geral</h2>
             </div>
             <ul className="list-disc ml-6 space-y-1">
-              <li>Tempo diário: 4 a 6 horas de estudo</li>
-              <li>6 dias de estudo + 1 dia de descanso/revisão</li>
+              <li>Tempo diário: 4 a 6 horas</li>
+              <li>6 dias de estudo + 1 dia para descanso/revisão</li>
               <li>Estratégia: 70% teoria + questões, 20% revisão, 10% redação</li>
             </ul>
           </div>
@@ -49,52 +53,37 @@ const PlanoFuvest = () => {
               <h2 className="text-2xl font-semibold">📌 Estrutura do Estudo Diário</h2>
             </div>
             <ul className="list-disc ml-6 space-y-1">
-              <li>Aquecimento (10 min) → revisar resumos do dia anterior</li>
-              <li>Bloco 1 (50 min) → Estudo teórico</li>
-              <li>Bloco 2 (50 min) → Questões de provas anteriores</li>
+              <li>Aquecimento (10 min) → revisar resumos</li>
+              <li>Bloco 1 (50 min) → Teoria</li>
+              <li>Bloco 2 (50 min) → Questões</li>
               <li>Bloco 3 (50 min) → Outro tema + exercícios</li>
-              <li>Redação (1h, 2x semana)</li>
-              <li>Revisão rápida (20 min) → flashcards, resumos ou mapas mentais</li>
+              <li>Redação: 1h, 2x semana</li>
+              <li>Revisão rápida: 20 min</li>
             </ul>
           </div>
 
           {/* Conteúdos-Chave */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
-            <h2 className="text-2xl font-semibold mb-4">📖 Conteúdos-Chave para a FUVEST</h2>
-
+            <h2 className="text-2xl font-semibold mb-4">📖 Conteúdos-Chave</h2>
             <p className="font-semibold">Matemática</p>
             <ul className="list-disc ml-6">
-              <li>Álgebra, Geometria, Funções, Probabilidade, Cálculo básico</li>
+              <li>Álgebra, Geometria, Funções, Probabilidade, Cálculo</li>
             </ul>
-
             <p className="font-semibold mt-4">Física</p>
             <ul className="list-disc ml-6">
-              <li>Cinemática, Leis de Newton, Energia, Termodinâmica, Óptica, Eletricidade, Física Moderna</li>
+              <li>Cinemática, Leis de Newton, Termodinâmica, Óptica, Eletricidade</li>
             </ul>
-
             <p className="font-semibold mt-4">Química</p>
             <ul className="list-disc ml-6">
-              <li>Química Geral, Estequiometria, Orgânica, Soluções, Bioquímica</li>
+              <li>Geral, Estequiometria, Orgânica, Soluções, Bioquímica</li>
             </ul>
-
             <p className="font-semibold mt-4">Biologia</p>
             <ul className="list-disc ml-6">
-              <li>Genética, Citologia, Fisiologia, Ecologia, Botânica</li>
+              <li>Genética, Fisiologia, Ecologia</li>
             </ul>
-
-            <p className="font-semibold mt-4">História</p>
+            <p className="font-semibold mt-4">Humanas e Literatura</p>
             <ul className="list-disc ml-6">
-              <li>Brasil, Geral, Américas e Contemporânea</li>
-            </ul>
-
-            <p className="font-semibold mt-4">Geografia</p>
-            <ul className="list-disc ml-6">
-              <li>Física, Humana, Geopolítica e Meio Ambiente</li>
-            </ul>
-
-            <p className="font-semibold mt-4">Língua Portuguesa e Literatura</p>
-            <ul className="list-disc ml-6">
-              <li>Interpretação, Gramática, Movimentos Literários, Obras obrigatórias</li>
+              <li>História, Geografia, Gramática, Movimentos Literários</li>
             </ul>
           </div>
 
@@ -105,9 +94,9 @@ const PlanoFuvest = () => {
               <h2 className="text-2xl font-semibold">📆 Revisão</h2>
             </div>
             <ul className="list-disc ml-6 space-y-1">
-              <li>Domingo: revisar tópicos e questões erradas</li>
-              <li>A cada 3 semanas: simulados completos (2 dias)</li>
-              <li>Revisão mensal: uso de técnicas de revisão espaçada</li>
+              <li>Domingo: revisão geral</li>
+              <li>A cada 3 semanas: simulados completos</li>
+              <li>Revisão mensal: técnicas de revisão espaçada</li>
             </ul>
           </div>
 
@@ -120,8 +109,7 @@ const PlanoFuvest = () => {
             <ul className="list-disc ml-6 space-y-1">
               <li>Resolva provas anteriores</li>
               <li>Pratique redações sobre temas atuais</li>
-              <li>Desenvolva leitura crítica e interpretação</li>
-              <li>Faça simulados com tempo cronometrado</li>
+              <li>Invista em interpretação de texto</li>
             </ul>
           </div>
         </div>

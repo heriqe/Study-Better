@@ -8,9 +8,14 @@ const PlanoTech = () => {
     <div className="App font-sans">
       <main className="pt-24 bg-gray-50 min-h-screen px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-10">
+          <h1 className="text-4xl font-bold text-center text-[#061d41] mb-6">
             Plano de Estudos para Carreiras Tech (3 a 6 meses)
           </h1>
+          <p className="text-gray-700 text-lg mb-10 text-center">
+            Desenvolvido pela equipe <strong>Study Better</strong> para futuros profissionais da área de tecnologia, 
+            este plano constrói uma base sólida em lógica, programação e ferramentas essenciais, 
+            visando inserção no mercado e evolução na carreira.
+          </p>
 
           {/* Organização Geral */}
           <div className="bg-white shadow-lg rounded-xl p-6 mb-8">
@@ -33,7 +38,7 @@ const PlanoTech = () => {
             </div>
             <ul className="list-disc ml-6 space-y-1">
               <li>Segunda → Lógica de Programação + Algoritmos</li>
-              <li>Terça → JavaScript ou Python (básico ao intermediário)</li>
+              <li>Terça → JavaScript ou Python</li>
               <li>Quarta → HTML + CSS</li>
               <li>Quinta → Banco de Dados (SQL + NoSQL)</li>
               <li>Sexta → Programação Orientada a Objetos</li>
