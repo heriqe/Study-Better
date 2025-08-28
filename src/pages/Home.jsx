@@ -3,7 +3,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Subjects from "../components/Subjects";
-import Simulados from "../components/Simulados";
 import Plans from "../components/Plans";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";

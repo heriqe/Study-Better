@@ -5,8 +5,6 @@ const Footer = () => (
     <div className="container mx-auto px-4 text-center">
       <p>&copy; {new Date().getFullYear()} StudyBetter. Todos os direitos reservados.</p>
       <div className="flex justify-center space-x-6 mt-4">
-        <a href="#" className="hover:text-white transition"><i className="fab fa-facebook-f"></i></a>
-        <a href="#" className="hover:text-white transition"><i className="fab fa-twitter"></i></a>
         <a href="#" className="hover:text-white transition"><i className="fab fa-instagram"></i></a>
       </div>
     </div>

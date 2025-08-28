@@ -1,83 +1,133 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef();
 
   useEffect(() => {
-    checkAuthStatus();
+    const user = localStorage.getItem("currentUser");
+    setCurrentUser(user ? JSON.parse(user) : null);
   }, []);
 
-  const checkAuthStatus = () => {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    setCurrentUser(user);
-  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("currentUser");
-    checkAuthStatus();
+    setCurrentUser(null);
     alert("Você saiu da sua conta.");
+    navigate("/");
   };
 
   return (
-    <nav className="fixed w-full bg-indigo-600 text-white shadow-lg z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold flex items-center">
-          <i className="fas fa-book-open mr-2"></i> StudyBetter
-        </a>
-
-        <div className="hidden md:flex space-x-6">
-          <a href="#home" className="hover:text-indigo-200 transition">Home</a>
-          <a href="#materias" className="hover:text-indigo-200 transition">Matérias</a>
-          <a href="#simulados" className="hover:text-indigo-200 transition">Simulados</a>
-          <a href="#planos" className="hover:text-indigo-200 transition">Planos</a>
-        </div>
-
-        <div className="hidden md:flex">
-          {currentUser ? (
-            <div className="flex items-center space-x-4">
-              <span>Olá, {currentUser.name.split(" ")[0]}</span>
-              <button
-                onClick={logout}
-                className="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition"
-              >
-                Sair
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => document.getElementById("login-modal").classList.remove("hidden")}
-              className="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition"
-            >
-              Entrar
-            </button>
-          )}
-        </div>
-
-        <button
-          className="md:hidden text-white text-xl focus:outline-none"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          <i className="fas fa-bars"></i>
-        </button>
+    <nav
+      className="text-white p-4 flex justify-between items-center shadow relative"
+      style={{ backgroundColor: "#061d41" }}
+    >
+      {/* Logo / Nome */}
+      <div
+        className="text-2xl font-bold cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        Study Better
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden bg-indigo-700 px-4 py-2">
-          <a href="#home" className="block py-2 hover:text-indigo-200 transition">Home</a>
-          <a href="#materias" className="block py-2 hover:text-indigo-200 transition">Matérias</a>
-          <a href="#simulados" className="block py-2 hover:text-indigo-200 transition">Simulados</a>
-          <a href="#planos" className="block py-2 hover:text-indigo-200 transition">Planos</a>
-          {!currentUser && (
+      {/* Links */}
+      <ul className="flex space-x-6">
+        <li>
+          <button
+            onClick={() => navigate("/")}
+            className="hover:text-[#47a5df] transition"
+          >
+            Home
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => navigate("/materias")}
+            className="hover:text-[#47a5df] transition"
+          >
+            Matérias
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => navigate("/simulados")}
+            className="hover:text-[#47a5df] transition"
+          >
+            Simulados
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={() => navigate("/planos")}
+            className="hover:text-[#47a5df] transition"
+          >
+            Planos
+          </button>
+        </li>
+      </ul>
+
+      {/* Usuário / Login */}
+      <div className="relative" ref={menuRef}>
+        {currentUser ? (
+          <div className="flex items-center space-x-2">
             <button
-              onClick={() => document.getElementById("login-modal").classList.remove("hidden")}
-              className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition mt-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="bg-white text-[#061d41] px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
             >
-              Entrar
+              {currentUser?.name?.split(" ")[0]}
             </button>
-          )}
-        </div>
-      )}
+
+            {menuOpen && (
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50">
+                <button
+                  onClick={() => navigate("/meus-planos")}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-50"
+                >
+                  Meus Planos de Estudo
+                </button>
+                <button
+                  onClick={() => navigate("/meus-simulados")}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-50"
+                >
+                  Meus Simulados
+                </button>
+                <button
+                  onClick={() => navigate("/configuracoes")}
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-50"
+                >
+                  Configurações
+                </button>
+                <button
+                  onClick={logout}
+                  className="block w-full text-left px-4 py-2 text-red-600 hover:bg-red-50"
+                >
+                  Sair
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={() => navigate("/login")}
+            className="px-4 py-2 rounded-lg font-medium transition"
+            style={{ backgroundColor: "#47a5df", color: "#061d41" }}
+          >
+            Entrar
+          </button>
+        )}
+      </div>
     </nav>
   );
 };

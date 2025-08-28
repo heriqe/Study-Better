@@ -1,31 +1,46 @@
+// src/components/Hero.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Hero = () => (
-  <section id="home" className="pt-24 pb-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-    <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-      <div className="md:w-1/2 mb-10 md:mb-0 fade-in">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Prepare-se para o ENEM e vestibulares
-        </h1>
-        <p className="text-xl mb-8">
-          Conteúdos estruturados, simulados reais e planos de estudo personalizados para você alcançar sua melhor performance.
-        </p>
-        <button
-          onClick={() => document.getElementById("login-modal").classList.remove("hidden")}
-          className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-indigo-100 transition transform hover:scale-105"
-        >
-          Começar agora
-        </button>
+const Hero = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section
+      className="text-white py-16"
+      style={{
+        background: "linear-gradient(90deg, #47a5df 0%, #061d41 100%)",
+      }}
+    >
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+        
+        {/* Texto */}
+        <div className="max-w-xl mb-8 md:mb-0 flex-1">
+          <h1 className="text-4xl font-bold leading-snug mb-4">
+            Sua aprovação começa aqui
+          </h1>
+          <p className="text-lg text-gray-100 mb-6">
+            Domine o ENEM e vestibulares com conteúdos exclusivos, simulados realistas e planos de estudo feitos sob medida para você.
+          </p>
+          <button
+            onClick={() => navigate("/materias")}
+            className="bg-white text-[#061d41] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition"
+          >
+            Começar agora
+          </button>
+        </div>
+
+        {/* Imagem grande ocupando metade da tela */}
+        <div className="flex-1 flex justify-center md:justify-end">
+          <img
+            src="/img/materiais-estudo-novo.png"
+            alt="Materiais de estudo"
+            className="w-full max-w-2xl object-contain rounded-lg shadow-lg"
+          />
+        </div>
       </div>
-      <div className="md:w-1/2 fade-in">
-        <img
-          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-          alt="Estudante se preparando"
-          className="rounded-xl shadow-2xl w-full max-w-lg mx-auto"
-        />
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Hero;

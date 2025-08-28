@@ -1,12 +1,47 @@
-# Study Better
+# 📚 Study Better
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Study Better** é uma plataforma educacional desenvolvida com React, voltada para ajudar estudantes na preparação para o ENEM e principais vestibulares do Brasil, como FUVEST e UNICAMP. O projeto oferece simulados, planos de estudo personalizados, depoimentos motivacionais e uma interface moderna com autenticação local.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- ✅ Autenticação (Login/Cadastro) com `localStorage`
+- 🧠 Simulados interativos
+- 📅 Planos de estudo para ENEM, FUVEST e UNICAMP
+- 📚 Listagem de matérias por área
+- 💬 Depoimentos de estudantes
+- 🎯 Interface responsiva com Tailwind CSS
+- 🔐 Modais de autenticação reutilizáveis
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧱 Estrutura de Pastas
+
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/) (presumido pelo uso de `main.jsx`)
+- [ESLint](https://eslint.org/) com plugins para React Hooks e Refresh
+
+---
+
+## 📦 Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/study-better.git
+
+# Acesse o diretório
+cd study-better
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
