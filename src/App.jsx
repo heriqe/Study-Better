@@ -19,6 +19,7 @@ import PlansPage from "./pages/PlansPage";
 import PlanoEnem from "./pages/PlanoEnem";
 import PlanoFuvest from "./pages/PlanoFuvest";
 import PlanoUnicamp from "./pages/PlanoUnicamp";
+import PlanoTech from "./pages/PlanoTech";
 
 const App = () => {
   return (
@@ -41,20 +42,19 @@ const App = () => {
             }
           />
 
-          {/* Página de matérias */}
+          {/* Matérias */}
           <Route path="/materias" element={<SubjectsPage />} />
 
-          {/* Página de simulados */}
+          {/* Simulados */}
           <Route path="/simulados" element={<Simulados />} />
           <Route path="/simulados/enem" element={<SimuladoEnem />} />
 
-          {/* Lista de planos */}
+          {/* Planos */}
           <Route path="/planos" element={<PlansPage />} />
-
-          {/* Páginas de planos detalhados */}
           <Route path="/planos/enem" element={<PlanoEnem />} />
           <Route path="/planos/fuvest" element={<PlanoFuvest />} />
           <Route path="/planos/unicamp" element={<PlanoUnicamp />} />
+          <Route path="/planos/tecnologia" element={<PlanoTech />} />
 
           {/* Login */}
           <Route path="/login" element={<LoginPage />} />
