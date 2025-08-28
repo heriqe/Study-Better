@@ -1,4 +1,3 @@
-// src/pages/PlansPage.jsx
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -16,7 +15,7 @@ const plans = [
   },
   {
     id: "fuvest",
-    title: "Plano Fuvest (6 meses)",
+    title: "Plano Fuvest (3 a 6 meses)",
     description:
       "Desenvolvido pela equipe Study Better com foco nas exigências da Fuvest. Objetivo: aprofundar nas disciplinas-chave e praticar questões no formato da prova.",
     icon: <FaUniversity className="text-white text-4xl" />,
@@ -24,7 +23,7 @@ const plans = [
   },
   {
     id: "unicamp",
-    title: "Plano Unicamp (6 meses)",
+    title: "Plano Unicamp (3 a 6 meses)",
     description:
       "Criado pela equipe Study Better para treinar interpretação e questões discursivas, alinhado ao estilo e conteúdos cobrados pela Unicamp.",
     icon: <FaBook className="text-white text-4xl" />,
@@ -32,7 +31,7 @@ const plans = [
   },
   {
     id: "tecnologia",
-    title: "Plano Carreiras Tech",
+    title: "Plano Carreiras Tech (3 a 6 meses)",
     description:
       "Planejamento da equipe Study Better para formar uma base sólida em programação, lógica e ferramentas, visando inserir você no mercado de tecnologia.",
     icon: <FaLaptopCode className="text-white text-4xl" />,
@@ -54,13 +53,17 @@ const PlansPage = () => {
               to={`/planos/${plan.id}`}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg hover:-translate-y-1 transition transform"
             >
-              <div className={`h-40 bg-gradient-to-r ${plan.gradient} flex items-center justify-center`}>
+              <div
+                className={`h-40 bg-gradient-to-r ${plan.gradient} flex items-center justify-center`}
+              >
                 {plan.icon}
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
                 <p className="text-gray-600">{plan.description}</p>
-                <span className="text-[#47a5df] font-medium block mt-4">Ver mais →</span>
+                <span className="text-[#47a5df] font-medium block mt-4">
+                  Ver mais →
+                </span>
               </div>
             </Link>
           ))}

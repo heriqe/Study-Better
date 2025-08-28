@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import SobreNos from "./components/SobreNos"; // novo componente "O que é o Study Better"
 import Subjects from "./components/Subjects";
 import Plans from "./components/Plans";
 import Testimonials from "./components/Testimonials";
@@ -34,6 +35,7 @@ const App = () => {
             element={
               <>
                 <Hero />
+                <SobreNos />
                 <Subjects />
                 <Plans />
                 <Testimonials />
