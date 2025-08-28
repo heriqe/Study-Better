@@ -1,15 +1,16 @@
+// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import SobreNos from "./components/SobreNos"; // novo componente "O que é o Study Better"
-import Subjects from "./components/Subjects";
-import Plans from "./components/Plans";
+import SectionWave from "./components/SectionWave";
+import SobreNos from "./components/SobreNos";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import AuthModals from "./components/AuthModals";
+import LazySection from "./components/LazySection";
 
 import LoginPage from "./pages/LoginPage";
 import Simulados from "./components/Simulados";
@@ -29,17 +30,32 @@ const App = () => {
         <Navbar />
 
         <Routes>
-          {/* Página inicial */}
+          {/* Home */}
           <Route
             path="/"
             element={
               <>
                 <Hero />
-                <SobreNos />
-                <Subjects />
-                <Plans />
-                <Testimonials />
-                <CTA />
+
+                <LazySection>
+                  <SectionWave color="#ffffff" />
+                </LazySection>
+
+                <LazySection>
+                  <SobreNos />
+                </LazySection>
+
+                <LazySection>
+                  <SectionWave flip color="#f9fafb" />
+                </LazySection>
+
+                <LazySection>
+                  <Testimonials />
+                </LazySection>
+
+                <LazySection>
+                  <CTA />
+                </LazySection>
               </>
             }
           />
