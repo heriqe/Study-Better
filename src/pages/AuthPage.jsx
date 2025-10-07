@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "../db/firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true); // true = Login, false = Cadastro
+  const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState({ username: "", email: "", password: "", confirm: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
+  // 🔹 LOGIN LOCAL
   const login = () => {
     const stored = JSON.parse(localStorage.getItem("studyUser"));
     if (!stored || stored.email !== user.email || stored.password !== user.password) {
@@ -19,21 +22,46 @@ const AuthPage = () => {
     navigate("/");
   };
 
+  // 🔹 CADASTRO LOCAL
   const register = () => {
     if (!user.username || !user.email || !user.password || user.password !== user.confirm) {
       alert("Preencha todos os campos corretamente!");
       return;
     }
-    localStorage.setItem("studyUser", JSON.stringify({ username: user.username, email: user.email, password: user.password }));
+    localStorage.setItem(
+      "studyUser",
+      JSON.stringify({ username: user.username, email: user.email, password: user.password })
+    );
     alert("Cadastro realizado!");
-    setIsLogin(true); // volta para o login após cadastro
+    setIsLogin(true);
+  };
+
+  // 🔹 LOGIN COM GOOGLE (Firebase)
+  const loginWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const userData = {
+        username: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      };
+      localStorage.setItem("studyLogged", JSON.stringify(userData));
+      alert(`Bem-vindo, ${user.displayName}!`);
+      navigate("/");
+    } catch (error) {
+      console.error("Erro no login com Google:", error);
+      alert("Falha ao fazer login com Google.");
+    }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-indigo-50">
       {/* Topo */}
       <div className="w-full flex items-center p-4 bg-indigo-600 text-white">
-        <button onClick={() => navigate("/")} className="mr-4 text-xl">←</button>
+        <button onClick={() => navigate("/")} className="mr-4 text-xl">
+          ←
+        </button>
         <h1 className="text-2xl font-bold">Study Better</h1>
       </div>
 
@@ -55,7 +83,6 @@ const AuthPage = () => {
         </div>
 
         {isLogin ? (
-          // Formulário de Login
           <div>
             <input
               name="email"
@@ -77,9 +104,21 @@ const AuthPage = () => {
             >
               Entrar
             </button>
+
+            {/* 🔹 Botão de Login com Google */}
+            <button
+              onClick={loginWithGoogle}
+              className="w-full mt-3 flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition"
+            >
+              <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+                className="w-5 h-5 mr-2"
+              />
+              Entrar com Google
+            </button>
           </div>
         ) : (
-          // Formulário de Cadastro
           <div>
             <input
               name="username"

@@ -1,5 +1,8 @@
 // src/components/AuthModals.jsx
 import React, { useState, useEffect } from "react";
+import { auth, googleProvider } from "../db/firebase";
+import { signInWithPopup } from "firebase/auth";
+
 
 const AuthModals = ({ autoOpen = false }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -95,8 +98,26 @@ const AuthModals = ({ autoOpen = false }) => {
     alert("Você saiu da sua conta.");
   };
 
+  const loginWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    const userData = {
+      username: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+    };
+    localStorage.setItem("studyLogged", JSON.stringify(userData));
+    alert(`Bem-vindo, ${user.displayName}!`);
+    document.getElementById("login-modal").classList.add("hidden");
+  } catch (error) {
+    console.error("Erro no login com Google:", error);
+    alert("Falha ao fazer login com Google.");
+  }
+};
+
   return (
-    <>
+    <div id="login-modal">
       {/* Botão Entrar / Sair */}
       <div id="auth-buttons">
         {currentUser ? (
@@ -171,7 +192,13 @@ const AuthModals = ({ autoOpen = false }) => {
                 >
                   Cadastre-se
                 </button>
-              </p>
+                <button
+                  onClick={loginWithGoogle}
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+                >
+                  Login com Google
+                </button>
+                 </p>
             </div>
           </div>
         </div>
@@ -256,7 +283,7 @@ const AuthModals = ({ autoOpen = false }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
